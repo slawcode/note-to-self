@@ -1,6 +1,15 @@
-const express = require('express');
-const app = express();
-const PORT = process.env.PORT || 3001;
+const express = require('express'); // Import Express.js
+const path = require('path'); // Import built-in Node.js package 'path' to resolve path of files that are located on server
+const fs = require('fs');
+const app = express(); // Initialize instance of Express.js
+const PORT = process.env.PORT || 3001; // Specify on which port Express.js server will run
+
+// Middleware for parsing application/json and urlencoded data
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
+
+// Static middleware pointing to the public folder 
+app.use(express.static('public')); 
 
 // GET route for homepage
 app.get('/', (req, res) =>
