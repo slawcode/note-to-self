@@ -25,6 +25,11 @@ app.get('*', (req, res) =>
   res.sendFile(path.join(__dirname, 'public/index.html'))
 );
 
+// POST route for a new note
+app.post('/notes', function (req, res) {
+  const note = 
+})
+
 app.listen(PORT, () =>
 console.log(`App listening at http://localhost:${PORT}`)
 ); 
