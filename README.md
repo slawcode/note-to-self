@@ -25,6 +25,10 @@ An Express Note Taker Application
 
 ## Credits 
 
+Calle, T. (2023). Thomas Express JS Note Taker. GitHub [Source Code]. https://github.com/ThomasCalle/Thomas-Express-JS-Note-Taker.git
+
+Martina, N. (2020, January 17). Simple note-taking app using Node.js and EJS. Medium. https://medium.com/@nnamani.ezinne/simple-note-taking-app-using-node-js-and-ejs-4899321a3342
+
 Tigalo, J. (2022). Notabilis. GitHub [Source Code]. https://github.com/jbtiglao/notabilis.git
 
 University of Toronto. (2023). Coding Boot Camp [Source Code].
