@@ -1,8 +1,7 @@
 const express = require('express'); // Import Express.js
 const path = require('path'); // Import built-in Node.js package 'path' to resolve path of files that are located on server
 const fs = require('fs');
-
-const uuid = require('./uuid/uuid');
+const uuid = require('./uuid/uuid'); // Creates uniques ids
 const app = express(); // Initialize instance of Express.js
 const PORT = process.env.PORT || 5001; // Specifies on which port Express.js server will run
 
@@ -10,12 +9,11 @@ const PORT = process.env.PORT || 5001; // Specifies on which port Express.js ser
 // // const notes = [];
 // // app.use(bodyParser.json()); // Middleware to parse JSON bodies
 
-// // Middleware for parsing application/json and urlencoded data
+// Middleware for parsing application/json and urlencoded data
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 // // app.use('/api', api);
-
-// // Static middleware pointing to the public folder 
+// Static middleware pointing to the public folder 
 app.use(express.static('public')); 
 
 // // GET route for homepage
@@ -59,7 +57,7 @@ app.get('*', (req, res) =>
 //     console.info(`${req.method} request received`);
 // });
 
-// GET and return all notes 
+// GET route to return all saved notes 
 app.get('/api/notes', (req, res) => {
     fs.readFile('.//db.json', 'utf8', (err, data) => {
         if (err) {
@@ -70,6 +68,7 @@ app.get('/api/notes', (req, res) => {
     });
 });
 
+// POST route to display new note
 app.post('/api/notes', (req, res) => {
     console.info(`${req.method} Request received to add a note`);
     fs.readFile('./db/db.json', 'utf8', (err, data) => {
