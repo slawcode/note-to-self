@@ -4,9 +4,9 @@ const fs = require('fs');
 const app = express(); // Initialize instance of Express.js
 const PORT = process.env.PORT || 5001; // Specifies on which port Express.js server will run
 
-const { v4: uuidv4 } = require('uuid');
-const notes = [];
-app.use(bodyParser.json()); // Middleware to parse JSON bodies
+// const { v4: uuidv4 } = require('uuid');
+// const notes = [];
+// app.use(bodyParser.json()); // Middleware to parse JSON bodies
 
 // Middleware for parsing application/json and urlencoded data
 app.use(express.json());
@@ -23,12 +23,22 @@ app.get('/', (req, res) =>
 
 // GET route for notes page
 app.get('/notes', (req, res) => 
-  res.sendFile(path.join(__dirname, './publc/notes.html'))
+  res.sendFile(path.join(__dirname, '/publc/notes.html'))
 );
 
 app.get('*', (req, res) =>
   res.sendFile(path.join(__dirname, 'public/index.html'))
 );
+
+app.post('/api/notes', (req, res) => {
+    res.json(`${req.method} request received`);
+    console.info(req.rawHeaders);
+    console.info(`${req.method} request received`);
+});
+
+app.listen(PORT, () =>
+console.log(`App listening at http://localhost:${PORT}`)
+); 
 
 // POST route for a new note
 // app.post('/notes', function (req, res) {
@@ -44,14 +54,22 @@ app.get('*', (req, res) =>
 // });
 
 // Create a new note
-app.post('/notes', (req, res) => {
-    const note ={ id: uuidv4(), title:  req.body.title, content:
-        req.body.content };
-        notStrictEqual.push(note);
-        res.status(201).json(note);
-});
+// app.post('/notes', (req, res) => {
+//     const note ={ id: uuidv4(), title:  req.body.title, content:
+//         req.body.content };
+//         note.push(note);
+//         res.status(201).json(note);
+// });
 
-app.listen(PORT, () =>
-console.log(`App listening at http://localhost:${PORT}`)
-); 
+// Update a note
+// app.put('/notes/:id', (req, res) => {
+//     const index = notes.findIndex(n => n.id === req.params.id);
+//     if (index !== -1) {
+//         notes[index] = { id: req.paramsms.id, title: req.body.title, content:
+//             req.body.content };
+//             res.json(notes[index]);
+//         } else {
+//             res.status(404).send('Note not found');
+//         }
+//     });
 
