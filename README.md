@@ -33,3 +33,4 @@ Tigalo, J. (2022). Notabilis. GitHub [Source Code]. https://github.com/jbtiglao/
 
 University of Toronto. (2023). Coding Boot Camp [Source Code].
 
+https://github.com/juanlajara/Note-Taker/blob/master/routes/apiRoutes.js

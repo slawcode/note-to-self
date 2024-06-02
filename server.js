@@ -35,9 +35,11 @@ app.post('/notes', function (req, res) {
   });
   fs.writeFile('./db/db.json', JSON.stringify(db), function() {
     res.json(db);
+    // console.info('Successfully updated your notes!')
   });
 });
 
 app.listen(PORT, () =>
 console.log(`App listening at http://localhost:${PORT}`)
 ); 
+
