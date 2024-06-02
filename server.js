@@ -70,6 +70,22 @@ app.get('/api/notes', (req, res) => {
     });
 });
 
+app.post('/api/notes', (req, res) => {
+    console.info(`${req.method} Request received to add a note`);
+    fs.readFile('./db/db.json', 'utf8', (err, data) => {
+        if (err) throw err;
+        const notes = JSON.parse(data);
+        let addNote = req.body;
+        addNote.id = uuid();
+        notes.push(addNote);
+        fs.writeFile('./db/db.json', JSON.stringify(notes), (err, data) => {
+            if (err) throw err;
+            res.json(notes);
+            console.info('Sucessfully updated notes!')
+        });
+    });
+});
+
 app.listen(PORT, () =>
 console.log(`App listening at http://localhost:${PORT}`)
 ); 
