@@ -4,6 +4,10 @@ const fs = require('fs');
 const app = express(); // Initialize instance of Express.js
 const PORT = process.env.PORT || 5001; // Specifies on which port Express.js server will run
 
+const { v4: uuidv4 } = require('uuid');
+const notes = [];
+app.use(bodyParser.json()); // Middleware to parse JSON bodies
+
 // Middleware for parsing application/json and urlencoded data
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
@@ -27,16 +31,24 @@ app.get('*', (req, res) =>
 );
 
 // POST route for a new note
-app.post('/notes', function (req, res) {
-//   const note = 
-  db.push(req.body);
-  db.forEach((obj, i) => {
-    obj.id = i + 1;
-  });
-  fs.writeFile('./db/db.json', JSON.stringify(db), function() {
-    res.json(db);
-    // console.info('Successfully updated your notes!')
-  });
+// app.post('/notes', function (req, res) {
+// //   const note = 
+//   db.push(req.body);
+//   db.forEach((obj, i) => {
+//     obj.id = i + 1;
+//   });
+//   fs.writeFile('./db/db.json', JSON.stringify(db), function() {
+//     res.json(db);
+//     // console.info('Successfully updated your notes!')
+//   });
+// });
+
+// Create a new note
+app.post('/notes', (req, res) => {
+    const note ={ id: uuidv4(), title:  req.body.title, content:
+        req.body.content };
+        notStrictEqual.push(note);
+        res.status(201).json(note);
 });
 
 app.listen(PORT, () =>
