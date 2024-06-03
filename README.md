@@ -32,9 +32,12 @@ An Express Note Taker Application
 https://note-to-self.onrender.com
 
 ## Screenshots 
-![]()
-![]()
-![]()
+![Screenshot of deployment confirmation through Render](images/screenshot0.png.png)
+![Screenshot of the application running in the browser through the Render deployment link](images/screenshot1.png)
+![Screenshot of the application running in the browser on the local host](images/screenshot2.png)
+![Screenshot of the application running in the browser and text for a new note and title](images/screenshot3.png)
+![Screenshot of the application running in the browser with the new note, title and text, saved](images/screenshot4.png)
+![Screenshot of the application running in the browser with the new note, title and text, reopened](images/screenshot5.png)
 
 ## License
 - There is no license for this project. 
