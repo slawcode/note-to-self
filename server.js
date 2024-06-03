@@ -5,10 +5,6 @@ const uuid = require('./uuid/uuid'); // Creates uniques ids
 const app = express(); // Initialize instance of Express.js
 const PORT = process.env.PORT || 5001; // Specifies on which port Express.js server will run
 
-// // const { v4: uuidv4 } = require('uuid');
-// // const notes = [];
-// // app.use(bodyParser.json()); // Middleware to parse JSON bodies
-
 // Middleware for parsing application/json and urlencoded data
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
@@ -26,36 +22,10 @@ app.get('/notes', (req, res) =>
   res.sendFile(path.join(__dirname, 'public/notes.html'))
 );
 
+// This wild card was causing the error in the browser and when moved to lines 62 to 64 the application then worked!!! It took over the index.html and was trying to read as JSON.
 // app.get('*', (req, res) =>
 //   res.sendFile(path.join(__dirname, 'public/index.html'))
 // );
-
-// POST route for a new note
-// app.post('/notes', function (req, res) {
-// //   const note = 
-//   db.push(req.body);
-//   db.forEach((obj, i) => {
-//     obj.id = i + 1;
-//   });
-//   fs.writeFile('./db/db.json', JSON.stringify(db), function() {
-//     res.json(db);
-//     // console.info('Successfully updated your notes!')
-//   });
-// });
-
-// Create a new note
-// app.post('/notes', (req, res) => {
-//     const note ={ id: uuidv4(), title:  req.body.title, content:
-//         req.body.content };
-//         note.push(note);
-//         res.status(201).json(note);
-// });
-
-// app.post('/api/notes', (req, res) => {
-//     res.json(`${req.method} request received`);
-//     console.info(req.rawHeaders);
-//     console.info(`${req.method} request received`);
-// });
 
 // GET route to return all saved notes 
 app.get('/api/notes', (req, res) => {
@@ -93,15 +63,5 @@ app.listen(PORT, () =>
 console.log(`App listening at http://localhost:${PORT}`)
 ); 
 
-// Update a note
-// app.put('/notes/:id', (req, res) => {
-//     const index = notes.findIndex(n => n.id === req.params.id);
-//     if (index !== -1) {
-//         notes[index] = { id: req.paramsms.id, title: req.body.title, content:
-//             req.body.content };
-//             res.json(notes[index]);
-//         } else {
-//             res.status(404).send('Note not found');
-//         }
-//     });
+
 
